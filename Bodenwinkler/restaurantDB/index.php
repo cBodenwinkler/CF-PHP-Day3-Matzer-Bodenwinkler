@@ -20,6 +20,10 @@
             border: solid black 1px;
             padding: 5px;
         }
+        table {
+            margin-left:auto;
+            margin-right:auto
+        }
     </style>
 </head>
 <body>

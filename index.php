@@ -29,19 +29,22 @@ require_once("../phpDay3/php/operation.php");
             <div class="d-flex justify-content-center">
                 <form action="" method="post" class="w-50">
                     <div class="py-2">
-                        <?php inputElement("<i class='fas fa-image col-2'></i>", "Picture", "food_picture", "") ?>
+                        <?php inputElement("", "Id", "food_id", "","none") ?>
                     </div>
                     <div class="py-2">
-                        <?php inputElement("<i class='fas fa-plus-square col-2'></i>", "Name", "food_name", "") ?>
+                        <?php inputElement("<i class='fas fa-image col-2'></i>", "Picture", "food_picture", "","") ?>
                     </div>
                     <div class="py-2">
-                        <?php inputElement("<i class='fas fa-euro-sign col-2'></i>", "Price", "food_price", "") ?>
+                        <?php inputElement("<i class='fas fa-plus-square col-2'></i>", "Name", "food_name", "","") ?>
                     </div>
                     <div class="py-2">
-                        <?php inputElement("<i class='fas fa-blender col-2'></i>", "Ingredients", "food_ingridiant", "") ?>
+                        <?php inputElement("<i class='fas fa-blender col-2'></i>", "Ingredients", "food_ingridiant", "","") ?>
                     </div>
                     <div class="py-2">
-                        <?php inputElement("<i class='fas fa-book-medical col-2'></i>", "Allergenes", "food_allergen", "") ?>
+                        <?php inputElement("<i class='fas fa-book-medical col-2'></i>", "Allergenes", "food_allergen", "","") ?>
+                    </div>
+                    <div class="py-2">
+                        <?php inputElement("<i class='fas fa-euro-sign col-2'></i>", "Price", "food_price", "","") ?>
                     </div>
                     <div class="d-flex justify-content-around mt-4">
                         <?php buttonElement("btn-create", "btn btn-success", "<i class='fas fa-plus'></i>", "create", "dat-toggle='tooltip' data-placement='bottom' title='create'") ?>
@@ -65,14 +68,15 @@ require_once("../phpDay3/php/operation.php");
                         </tr>
                     </thead>
                     <tbody id="tbody">
-                        <tr>
+                        <!-- <tr>
+                            <td class="align-middle"></td>
                             <td class="align-middle"><img src="./img/pizza-salami.jpg" alt=""></td>
                             <td class="align-middle">Pizza Salami</td>
                             <td class="align-middle">Salami, Oregano, Basil, Parmesan, Mozzarella, Tomato, Onion</td>
                             <td class="align-middle">Gluten, Eggs, Celery, Soybeans</td>
                             <td class="align-middle">14</td>
                             <td class="align-middle"><i class="fas fa-edit btnedit"></i></td>
-                        </tr>
+                        </tr> -->
                         <?php 
                         // Get Data button click
                         if(isset($_POST['read'])){
@@ -80,8 +84,8 @@ require_once("../phpDay3/php/operation.php");
                         if($result){
                         while($row = mysqli_fetch_assoc($result)){
                         echo tableRowElement($row['meal_img'], $row['meal_name'], $row['meal_ingredients'], $row['meal_allergenes'], $row['meal_price'], $row['id']);
-                        } 
-                        }
+                                } 
+                            }
                         }
                         ?>
                     </tbody>

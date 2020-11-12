@@ -14,25 +14,25 @@ $(".btnedit").click(e => {
     // uncommend for to understand
     // console.log(textvalues)
 
-    let id = $("input[name*='id']");
-    let mealImg = $("input[name*='meal_img']");
-    let mealName = $("input[name*='meal_name']");
-    let mealIngredients = $("input[name*='meal_ingredients']");
-    let mealAllergenes = $("input[name*='meal_allergenes']");
-    let mealPrice = $("input[name*='meal_price']");
+    let mealId = $("input[name*='food_id']");
+    let mealImg = $("input[name*='food_picture']");
+    let mealName = $("input[name*='food_name']");
+    let mealIngredients = $("input[name*='food_ingridiant']");
+    let mealAllergenes = $("input[name*='food_allergen']");
+    let mealPrice = $("input[name*='food_price']");
 
-    console.log(id);
-    console.log(mealImg);
-    console.log(mealName);
-    console.log(mealIngredients);
-    console.log(mealAllergenes);
-    console.log(mealPrice);
-    mealImg.val(textvalues[0]);
-    mealName.val(textvalues[1]);
-    mealIngredients.val(textvalues[2]);
-    mealAllergenes.val(textvalues[3]);
-    mealPrice.val(textvalues[4]);
-
+    // console.log(id);
+    // console.log(mealImg);
+    // console.log(mealName);
+    // console.log(mealIngredients);
+    // console.log(mealAllergenes);
+    // console.log(mealPrice);
+    mealId.val(textvalues[0]);
+    mealImg.val(textvalues[1]);
+    mealName.val(textvalues[2]);
+    mealIngredients.val(textvalues[3]);
+    mealAllergenes.val(textvalues[4]);
+    mealPrice.val(textvalues[5]);
 });
 
 
@@ -44,8 +44,9 @@ function displayData(e) {
 
 for (const value of td) {
     if (value.dataset.id == e.target.dataset.id) {
-        // console.log(e.target.dataset.id); 
+        console.log(e.target.dataset.id); 
         textvalues[id++] = value.textContent;
+        console.log(textvalues);
     }
     }
     return textvalues;

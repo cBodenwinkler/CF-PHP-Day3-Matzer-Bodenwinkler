@@ -1,5 +1,20 @@
 <!-- RESTAURANT -->
 <?php
+    ob_start();
+    session_start();
+    require_once '../../Login/DaysWork/dbconnect.php';
+
+    //if session is not set this will redirect to login page:
+    if(!isset($_SESSION['user'])) {
+        header("Location: ../../Login/DaysWork/index.php");
+        exit;
+    }
+    //select logged-in users details:
+    $res = mysqli_query($conn, "SELECT * FROM users WHERE userId=".$_SESSION['user']);
+    $userRow = mysqli_fetch_array($res, MYSQLI_ASSOC);
+?>
+
+<?php
     require_once 'actions/db_connect.php';
 
     if($_GET['id']) {
@@ -30,11 +45,11 @@
     <form action ="actions/a_delete.php" method="post">
         <input type="hidden" name= "id" value="<?php echo $data['id'] ?>" />
 
-        <button type="submit">Yes, delete it!</button >
+        <button type="submit"  class="btn btn-primary">Yes, delete it!</button >
         
-        <a href="index.php"><button type="button">No, go back!</button ></a>
+        <a href="index.php"><button type="button"  class="btn btn-secondary">No, go back!</button ></a>
     </form>
-
+    <a href="../../Login/DaysWork/home.php"> <button class="btn btn-block btn-danger mt-5" type="submit">Logout</button> </a>
 </div>
 
 </body>

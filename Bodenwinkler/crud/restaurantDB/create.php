@@ -1,4 +1,19 @@
 <!-- RESTAURANT -->
+<?php
+    ob_start();
+    session_start();
+    require_once '../../Login/DaysWork/dbconnect.php';
+
+    //if session is not set this will redirect to login page:
+    if(!isset($_SESSION['user'])) {
+        header("Location: ../../Login/DaysWork/index.php");
+        exit;
+    }
+    //select logged-in users details:
+    $res = mysqli_query($conn, "SELECT * FROM users WHERE userId=".$_SESSION['user']);
+    $userRow = mysqli_fetch_array($res, MYSQLI_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,15 +38,16 @@
         <input type="number" name="meal_price" placeholder="00.00€">
     
         <h4>Ingredients:</h4>
-        <input size="50" type="text" name="meal_ingredients" placeholder="Ingredients">
+        <input rows="5" cols="50" type="text" name="meal_ingredients" placeholder="Ingredients">
     
         <h4>Allergens:</h4>
         <input size="50" type="text" name="meal_allergens" placeholder="Allergens">
     
-        <h4>Submit the Meal:</h4>
-        <button type="submit">Submit New Meal</button>
-        <a href="index.php"> <button type="button">BACK</button> </a>
+        <h5 style="margin-top:50px">Submit the Meal:</h5>
+        <button type="submit" class="btn btn-block btn-primary mt-1">Submit New Meal</button>
+        <a href="index.php"> <button type="button" class="btn btn-block btn-secondary mt-1">BACK</button> </a>
     </form>
+    <a href="../../Login/DaysWork/home.php"> <button class="btn btn-block btn-danger mt-5" type="submit">Logout</button> </a>
     </div>
 </body>
 </html>
